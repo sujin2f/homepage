@@ -3,6 +3,7 @@ import Helmet from 'react-helmet';
 
 import ContentsWrapperContainer from 'app/components/Common/ContentsWrapperContainer';
 import GlobalHeaderContainer from 'app/components/Layout/GlobalHeaderContainer';
+import GlobalFooter from 'app/components/Layout/GlobalFooter';
 
 class Public extends Component {
   constructor(props) {
@@ -22,15 +23,13 @@ class Public extends Component {
   }
 
   render() {
-    const internalURI = process.env.NODE_ENV === 'production'
-      ? 'http://sujinc.com http://sujinc.com:7777'
-      : 'http://hope21.x10host.com';
+    const internalURI = 'http://hope21.x10host.com http://localhost:8080';
 
     return (
       <ContentsWrapperContainer>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Sujin</title>
+          <title>Hope21</title>
 
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="Content-type" content="text/html; charset=utf-8" />
@@ -111,12 +110,15 @@ class Public extends Component {
           <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="16x16" />
           <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="32x32" />
           <link rel="shortcut icon" href="/images/favicon.ico" />
-
         </Helmet>
 
         <GlobalHeaderContainer />
 
-        {this.props.children}
+        <section id="container">
+          {this.props.children}
+        </section>
+
+        <GlobalFooter />
       </ContentsWrapperContainer>
     );
   }

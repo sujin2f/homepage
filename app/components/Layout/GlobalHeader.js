@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 import Link from 'src/components/Link';
-
 import MenuContainer from 'app/components/Common/MenuContainer';
-import SocialMedia from 'app/components/Common/SocialMedia';
+import SVGIcon from 'app/components/Common/SVGIcon';
 
 class GlobalHeader extends Component {
   constructor(props) {
@@ -26,85 +25,76 @@ class GlobalHeader extends Component {
 
   handleKeyDownSearch(event) {
     if (event.keyCode === 13) {
+      // TODO Search!!
       document.getElementById('search-button').click();
     }
   }
 
-  handleSubmitSearch(event) {
+  handleSubmitSearch() {
     if (!this.state.searchOpened || !this.state.searchString) {
-      event.preventDefault();
+      if (!this.state.searchOpened) {
+        setTimeout(() => document.getElementById('search-string').focus(), 300);
+      } else {
+        setTimeout(() => document.getElementById('search-string').blur(), 300);
+      }
+
       this.setState({
         searchOpened: !this.state.searchOpened,
+        searchString: '',
       });
-
-      setTimeout(() => document.getElementById('search-string').focus(), 300);
     } else {
+      // TODO Search!!
       this.setState({ searchString: '' });
     }
   }
 
   render() {
     const { toggleMobileMenu, mobileMenuActivated } = this.props;
+    const movileActivated = mobileMenuActivated ? 'activated' : '';
 
     return (
       <section
         id="global-header"
         itemType="http://schema.org/WPHeader"
-        className={`${mobileMenuActivated ? 'show-mobile-menu' : ''}`}
         >
-        <section className="floating-row">
-          <div className="section left" />
-          <div className="section center" />
-          <div className="section right" />
+        <section className="gap desktop-padding" />
+
+        <button id="mobile-menu" onClick={toggleMobileMenu}>
+          <SVGIcon name="burger" />
+        </button>
+
+        <section className="gap mobile-left" />
+
+        <Link href={`${process.env.SUJIN_BASE_URL}`} className="logo">
+          <SVGIcon name="logo-header" className="desktop tablet" />
+          <SVGIcon name="logo-header-mobile" className="mobile" />
+        </Link>
+
+        <MenuContainer className={movileActivated} />
+
+        <section className="gap desktop-middle" />
+
+        <section
+          id="search-container"
+          className={`${this.state.searchOpened ? 'open' : ''} ${movileActivated}`}
+          >
+          <input
+            type="text"
+            id="search-string"
+            value={this.state.searchString}
+            onChange={this.handleChangeSearch}
+            onKeyDown={this.handleKeyDownSearch}
+          />
+          <button
+            id="search-button"
+            onClick={e => this.handleSubmitSearch(e)}
+            >
+            <SVGIcon name="magnet" />
+          </button>
         </section>
 
-        <section className="floating-row">
-          <div className="row">
-            <section className="columns small-6 flex-container-row">
-              <button
-                id="btn-toggle-mobile"
-                className="hide-for-large"
-                onClick={toggleMobileMenu}
-                >
-                <span className="fa fa-bars" aria-hidden="true" />
-              </button>
-              <MenuContainer
-                className="show-for-large flex-container-row menu-top"
-                position="top"
-              />
-            </section>
-            <section className="columns small-6 hide-for-small-only flex-container-row right">
-              <section id="search-container" className="flex-container-row">
-                <div className={`${this.state.searchOpened ? 'open' : ''} flex-container-row`}>
-                  <input
-                    type="text"
-                    id="search-string"
-                    value={this.state.searchString}
-                    onChange={this.handleChangeSearch}
-                    onKeyDown={this.handleKeyDownSearch}
-                    />
-                  <Link
-                    id="search-button"
-                    onClick={this.handleSubmitSearch}
-                    href={`${process.env.SUJIN_BASE_URL}search/${this.state.searchString}`}
-                    >
-                    <span className="fa fa-search" aria-hidden="true" />
-                  </Link>
-                </div>
-              </section>
-
-              <SocialMedia className="show-for-large" position="top" />
-            </section>
-          </div>
-        </section>
-
-        <section className="logo">
-          <Link href={`${process.env.SUJIN_BASE_URL}`} className="txt2image">Sujin</Link>
-        </section>
-
-        <section id="mobile-menu" className="hide-for-large">
-          <MenuContainer position="mobile" />
-        </section>
+        <section className="gap mobile-right" />
+        <section className="gap desktop-padding" />
       </section>
     );
   }

@@ -1,5 +1,6 @@
-@import "font-awesome";
-@import "fira-code";
+@import "godo";
+
+@import "mixins";
 @import "settings";
 
 @import "~foundation-sites/scss/foundation";
@@ -9,8 +10,10 @@
 @include foundation-flex-grid;
 
 @import "global";
-@import "social-media";
 @import "header";
+
+/*
+@import "social-media";
 @import "footer";
 @import "thumbnail";
 @import "aside";
@@ -20,3 +23,4 @@
 @import "404";
 
 @import "carousel";
+*/

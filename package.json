@@ -93,6 +93,7 @@
     "memory-fs": "^0.4.1",
     "prerender-node": "^3.1.1",
     "react": "^16.3.2",
+    "react-animated-slider": "^1.1.4",
     "react-dom": "^16.3.2",
     "react-gist": "^1.2.1",
     "react-helmet": "^5.2.0",

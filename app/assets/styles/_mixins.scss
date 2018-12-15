@@ -1,0 +1,33 @@
+@mixin mobile {
+  	display: none;
+
+  @include breakpoint(small only) {
+    	display: block !important;
+  }
+}
+
+@mixin tablet {
+  	display: none;
+
+  @include breakpoint(medium only) {
+    	display: block !important;
+  }
+}
+
+@mixin desktop {
+  	display: none;
+
+  @include breakpoint(large xlarge) {
+    	display: block !important;
+  }
+}
+
+@mixin txt2image($background-image: false) {
+	text-indent: -1000px;
+	overflow: hidden;
+	display: inline-block;
+
+	@if $background-image {
+		background: transparent url($background-image) no-repeat center center;
+  	}
+}

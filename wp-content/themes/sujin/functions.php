@@ -14,6 +14,6 @@ if ( !defined( "ABSPATH" ) ) {
 }
 
 include_once( __DIR__ . '/autoload.php' );
-include_once( __DIR__ . '/venders/wp-express/autoload.php' );
+include_once( __DIR__ . '/venders/wp_express/autoload.php' );
 
 Sujin\Wordpress\Theme\Sujin\Bootstrap::get_instance();
