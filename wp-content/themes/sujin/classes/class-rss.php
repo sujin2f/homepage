@@ -20,8 +20,9 @@ class RSS {
  	}
 
 	function get_bloginfo_rss( $info, $show ) {
-		if ( 'url' === $show )
+		if ( 'url' === $show ) {
 			$info = convert_chars( 'http://www.sujinc.com/' );
+		}
 
 		return $info;
 	}

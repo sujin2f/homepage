@@ -4,41 +4,35 @@
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title><%= htmlWebpackPlugin.options.title %></title>
-
 		<meta
 			http-equiv="Content-Security-Policy"
 			content="
 				default-src 'self';
 				style-src 'self' 'unsafe-inline'
-					https://fonts.googleapis.com
-					http://fonts.googleapis.com
-					https://platform.twitter.com
+					*.googleapis.com
+					*.twitter.com
 					data: blob:;
 				media-src 'self';
-				font-src 'self' https://fonts.gstatic.com data:;
+				font-src 'self' *.gstatic.com data:;
 				img-src * data:;
 				script-src 'unsafe-inline' 'unsafe-eval'
-					http://localhost:8080
-					http://pagead2.googlesyndication.com
-					https://www.googletagmanager.com
-					https://adservice.google.com
-					https://adservice.google.ca
-					https://www.google-analytics.com
-					http://platform.twitter.com
-					https://platform.twitter.com
-					https://syndication.twitter.com
-					https://cdn.syndication.twimg.com
+					localhost:8080
+					*.googlesyndication.com
+					*.googletagmanager.com
+					*.google.com
+					*.google.ca
+					*.google-analytics.com
+					*.twitter.com
+					*.twimg.com
 					data: blob:;
 				connect-src 'self'
-				  http://localhost:8000
-				  http://hope21.x10host.com
+    				localhost:1001
+				  localhost:8080
 				  ws:;
 				frame-src 'self'
-					https://googleads.g.doubleclick.net
-					http://embed.gettyimages.com
-					http://platform.twitter.com
-					https://platform.twitter.com
-					https://syndication.twitter.com
+					*.doubleclick.net
+					*.gettyimages.com
+					*.twitter.com
 			">
 
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-117697376-1"></script>

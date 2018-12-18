@@ -47,11 +47,11 @@ function getMenuFail(error) {
   };
 }
 
-export function getMenu() {
+export function getMenu(menuName) {
   return (dispatch) => {
     dispatch(getMenuInit());
 
-    axios.get('wp-json/sujin/v1/menu')
+    axios.get(`wp-json/wp/v2/menu/${menuName}`)
       .then((response) => {
         dispatch(getMenuSuccess(response));
       }).catch((error) => {

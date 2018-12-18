@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import SliderContainer from './FrontPage/SliderContainer';
 
 class FrontPage extends Component {
   componentDidMount() {
@@ -11,6 +12,8 @@ class FrontPage extends Component {
   render() {
     return (
       <Fragment>
+        <SliderContainer />
+
         <h1>Header 1</h1>
         <p>
           <strong>

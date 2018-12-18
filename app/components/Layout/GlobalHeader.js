@@ -16,7 +16,7 @@ class GlobalHeader extends Component {
     this.handleKeyDownSearch = this.handleKeyDownSearch.bind(this);
     this.handleSubmitSearch = this.handleSubmitSearch.bind(this);
 
-    this.props.getMenu();
+    this.props.getMenu('Global Nav');
   }
 
   handleChangeSearch(event) {
@@ -53,7 +53,7 @@ class GlobalHeader extends Component {
     const movileActivated = mobileMenuActivated ? 'activated' : '';
 
     return (
-      <section
+      <header
         id="global-header"
         itemType="http://schema.org/WPHeader"
         >
@@ -95,7 +95,7 @@ class GlobalHeader extends Component {
 
         <section className="gap mobile-right" />
         <section className="gap desktop-padding" />
-      </section>
+      </header>
     );
   }
 }

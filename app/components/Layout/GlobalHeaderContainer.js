@@ -15,8 +15,8 @@ const mapDispatchToProps = dispatch => ({
   toggleMobileMenu: () => {
     dispatch(toggleMobileMenu());
   },
-  getMenu: () => {
-    dispatch(getMenu());
+  getMenu: (menuName) => {
+    dispatch(getMenu(menuName));
   },
 });
 

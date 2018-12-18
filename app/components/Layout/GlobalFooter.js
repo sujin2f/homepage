@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import CopywriteContainer from 'app/components/Layout/GlobalFooter/CopywriteContainer';
+import Copywrite from 'app/components/Layout/GlobalFooter/Copywrite';
+import SocialMedia from 'app/components/Common/SocialMedia';
 
 class GlobalFooter extends Component {
   componentDidMount() {
@@ -9,20 +10,23 @@ class GlobalFooter extends Component {
 
   render() {
     return (
-      <section id="global-footer">
+      <footer id="global-footer">
         <div className="row widget-area">
           <div className="small-12 medium-4 large-4 columns">
-            Ad will be here
+            <h1>Contact</h1>
+            E. hope21.ca@google.com
+            <SocialMedia position="bottom" />
           </div>
           <div className="small-12 medium-4 large-4 columns">
-            Second widget
+            <h1>Powered by</h1>
           </div>
           <div className="small-12 medium-4 large-4 columns">
-            Third widget
+            <h1>Theme Creator</h1>
           </div>
         </div>
-        <CopywriteContainer />
-      </section>
+
+        <Copywrite />
+      </footer>
     );
   }
 }

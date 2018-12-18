@@ -15,9 +15,13 @@ class Bootstrap {
 	function __construct() {
 		Theme_Supports::get_instance();
 		RSS::get_instance();
-		REST_API::get_instance();
+		REST_WP::get_instance();
+		Posttype::get_instance();
+
+/*
 		Theme_Customizer::get_instance();
 		Custom_Fields::get_instance();
 		Post_Series::get_instance();
+*/
 	}
 }

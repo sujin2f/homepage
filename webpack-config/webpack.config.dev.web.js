@@ -12,8 +12,8 @@ const destinations = [
 export default merge.smart(
   parts.setupBase(),
   parts.setupEntries({
-    app: path.resolve(destinations[0], 'assets', 'styles', 'app.scss'),
-    style: path.resolve(destinations[1], 'app.js'),
+    style: path.resolve(destinations[0], 'assets', 'styles', 'app.scss'),
+    app: path.resolve(destinations[1], 'app.js'),
   }),
   parts.setupResolves({
     app: destinations[0],
