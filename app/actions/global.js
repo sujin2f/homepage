@@ -1,61 +1,37 @@
-import axios from 'app/utils/axios';
+export const SET_MOBILE_MENU = 'sujin/v2/global/SET_MOBILE_MENU';
 
-export const TOGGLE_SCROLL = 'sujin/global/TOGGLE_SCROLL';
-export const TOGGLE_MOBILE_MENU = 'sujin/global/TOGGLE_MOBILE_MENU';
-export const RESET_MOBILE_MENU = 'sujin/global/RESET_MOBILE_MENU';
+export const REQUEST_MENU_INIT = 'sujin/v2/global/REQUEST_MENU_INIT';
+export const REQUEST_MENU_SUCCESS = 'sujin/v2/global/REQUEST_MENU_SUCCESS';
+export const REQUEST_MENU_FAIL = 'sujin/v2/global/REQUEST_MENU_FAIL';
 
-export const GET_MENU_INIT = 'sujin/global/GET_MENU_INIT';
-export const GET_MENU_SUCCESS = 'sujin/global/GET_MENU_SUCCESS';
-export const GET_MENU_FAIL = 'sujin/global/GET_MENU_FAIL';
-
-export function toggleScroll(key) {
+// Mobile Menu
+export function setMobileMenu(status) {
   return {
-    type: TOGGLE_SCROLL,
-    key,
+    type: SET_MOBILE_MENU,
+    status,
   };
 }
 
-export function toggleMobileMenu() {
+// Read WP Menu
+export function requestMenuInit(slug) {
   return {
-    type: TOGGLE_MOBILE_MENU,
+    type: REQUEST_MENU_INIT,
+    slug,
   };
 }
 
-export function resetMobileMenu() {
+export function requestMenuSuccess(slug, response) {
   return {
-    type: RESET_MOBILE_MENU,
-  };
-}
-
-function getMenuInit() {
-  return {
-    type: GET_MENU_INIT,
-  };
-}
-
-function getMenuSuccess(response) {
-  return {
-    type: GET_MENU_SUCCESS,
+    type: REQUEST_MENU_SUCCESS,
+    slug,
     response,
   };
 }
 
-function getMenuFail(error) {
+export function requestMenuFail(slug, error) {
   return {
-    type: GET_MENU_FAIL,
+    type: REQUEST_MENU_FAIL,
+    slug,
     error,
-  };
-}
-
-export function getMenu(menuName) {
-  return (dispatch) => {
-    dispatch(getMenuInit());
-
-    axios.get(`wp-json/wp/v2/menu/${menuName}`)
-      .then((response) => {
-        dispatch(getMenuSuccess(response));
-      }).catch((error) => {
-        dispatch(getMenuFail(error));
-      });
   };
 }

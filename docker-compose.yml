@@ -1,20 +1,25 @@
 version: '2'
 services:
   wordpress:
-    container_name: wp-hope21
-    image: wordpress:latest
+    container_name: wordpress-hope21
+    image: sujin2f/wordpress:latest
     external_links:
       - mariadb:mysql
       - mailhog
     restart: always
     environment:
-      WORDPRESS_DB_NAME: hope21
+      VIRTUAL_HOST: hope21.test
+      WORDPRESS_DB_NAME: hope21.test
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DEBUG: 1
+      TZ: America/Toronto
     volumes:
-      - ./wp-content:/var/www/html/wp-content
+      - ../../storage/sujin/plugins:/var/www/html/wp-content/plugins
+      - ../../storage/sujin/uploads:/var/www/html/wp-content/uploads
+      - ./:/var/www/html/wp-content/themes/hope21
     ports:
-      - 1001:80
+      - 80
     networks:
       - local_default
 networks:

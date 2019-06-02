@@ -1,0 +1,148 @@
+.icon {
+	text-indent: -9999px;
+	mask-position: center;
+	mask-repeat: no-repeat;
+	mask-size: contain;
+	-webkit-mask-position: center;
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: contain;
+
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	&.hamburger {
+		-webkit-mask-image: url('../images/icons/hamburger.svg');
+		mask-image: url('../images/icons/hamburger.svg');
+	}
+
+	&.logo {
+		background-image: url('../images/logo.svg');
+	}
+
+	&.logo.reverse {
+		background-image: url('../images/logo-background.svg');
+	}
+
+	&.magnify {
+		-webkit-mask-image: url('../images/icons/magnify.svg');
+		mask-image: url('../images/icons/magnify.svg');
+	}
+}
+
+.social-media {
+	a {
+		text-indent: -2000px;
+		overflow: hidden;
+		width: 26px;
+		height: 26px;
+		padding: 0;
+		transition: ease-out background-color 0.3s;
+		margin-right: .2em;
+		border-radius: 6px;
+
+		mask-position: center;
+		mask-repeat: no-repeat;
+		mask-size: contain;
+		-webkit-mask-position: center;
+		-webkit-mask-repeat: no-repeat;
+		-webkit-mask-size: contain;
+
+		&.github {
+			-webkit-mask-image: url('../images/icons/github.svg');
+			mask-image: url('../images/icons/github.svg');
+		}
+
+		&.facebook {
+			-webkit-mask-image: url('../images/icons/facebook.svg');
+			mask-image: url('../images/icons/facebook.svg');
+		}
+
+		&.twitter {
+			-webkit-mask-image: url('../images/icons/twitter.svg');
+			mask-image: url('../images/icons/twitter.svg');
+		}
+
+		&.flickr {
+			-webkit-mask-image: url('../images/icons/flickr.svg');
+			mask-image: url('../images/icons/flickr.svg');
+		}
+
+		&.linkedin {
+			-webkit-mask-image: url('../images/icons/linkedin.svg');
+			mask-image: url('../images/icons/linkedin.svg');
+		}
+
+		&.rss {
+			-webkit-mask-image: url('../images/icons/rss.svg');
+			mask-image: url('../images/icons/rss.svg');
+		}
+	}
+}
+
+.social-share {
+	display: flex;
+	margin-top: 40px;
+
+	button {
+		background-color: $dark-gray;
+		width: 50px;
+		height: 50px;
+		border-radius: 30px;
+		margin-right: 5px;
+		transition: background-color ease-out 0.5s;
+		-webkit-mask-size: contain;
+		mask-size: contain;
+		mask-position: center;
+		-webkit-mask-position: center;
+		mask-repeat: no-repeat;
+		-webkit-mask-repeat: no-repeat;
+
+		&:hover {
+			background-color: map-get($foundation-palette, 'primary');
+		}
+
+		&.twitter {
+			-webkit-mask-image: url('../images/icons/twitter.svg');
+			mask-image: url('../images/icons/twitter.svg');
+		}
+
+		&.facebook {
+			-webkit-mask-image: url('../images/icons/facebook.svg');
+			mask-image: url('../images/icons/facebook.svg');
+		}
+	}
+}
+
+#prev-next {
+	a {
+		i {
+			&:after {
+				content: '';
+
+				-webkit-mask-position: center;
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-size: 10px;
+
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+
+				-webkit-mask-image: url('../images/icons/prev.svg');
+				mask-image: url('../images/icons/prev.svg');
+
+				width: 40px;
+				height: 40px;
+				display: block;
+
+				background-color: white;
+			}
+		}
+
+		&.next {
+			i:after {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}

@@ -1,67 +1,55 @@
 // Import Actions
 import {
-  TOGGLE_SCROLL,
-  TOGGLE_MOBILE_MENU,
-  RESET_MOBILE_MENU,
+  SET_MOBILE_MENU,
 
-  GET_MENU_INIT,
-  GET_MENU_SUCCESS,
-  GET_MENU_FAIL,
+  REQUEST_MENU_INIT,
+  REQUEST_MENU_SUCCESS,
+  REQUEST_MENU_FAIL,
 } from 'app/actions/global';
 
-import { getLink } from 'app/utils/common';
+import { IS_LOADING } from 'app/constants/common';
 
 // Initial State
 const initialState = {
-  scrolled: '',
   mobileMenu: false,
   pushed: '',
-  menu: [],
+  menu: {},
 };
 
 // Actions
 function global(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_SCROLL: {
+    case SET_MOBILE_MENU: {
       return {
         ...state,
-        scrolled: action.key,
+        mobileMenu: (action.status === 'toggle') ? !state.mobileMenu : action.status,
       };
     }
-    case TOGGLE_MOBILE_MENU: {
+    case REQUEST_MENU_INIT: {
       return {
         ...state,
-        mobileMenu: !state.mobileMenu,
+        menu: {
+          ...state.menu,
+          [action.slug]: IS_LOADING,
+        },
       };
     }
-    case RESET_MOBILE_MENU: {
+    case REQUEST_MENU_SUCCESS: {
       return {
         ...state,
-        mobileMenu: false,
+        menu: {
+          ...state.menu,
+          [action.slug]: action.response.data,
+        },
       };
     }
-
-    case GET_MENU_INIT: {
+    case REQUEST_MENU_FAIL: {
       return {
         ...state,
-        menu: [],
-      };
-    }
-    case GET_MENU_SUCCESS: {
-      const menu = action.response.data.map(m => ({
-        title: m.title,
-        url: getLink(m.url),
-      }));
-
-      return {
-        ...state,
-        menu,
-      };
-    }
-    case GET_MENU_FAIL: {
-      return {
-        ...state,
-        menu: [],
+        menu: {
+          ...state.menu,
+          [action.slug]: [],
+        },
       };
     }
 

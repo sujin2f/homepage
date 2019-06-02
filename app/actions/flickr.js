@@ -1,37 +1,22 @@
-import axios from 'app/utils/axios';
+export const REQUEST_FLICKR_INIT = 'sujin/flickr/REQUEST_FLICKR_INIT';
+export const REQUEST_FLICKR_SUCCESS = 'sujin/flickr/REQUEST_FLICKR_SUCCESS';
+export const REQUEST_FLICKR_FAIL = 'sujin/flickr/REQUEST_FLICKR_FAIL';
 
-export const GET_FLICKR_INIT = 'sujin/flickr/GET_FLICKR_INIT';
-export const GET_FLICKR_SUCCESS = 'sujin/flickr/GET_FLICKR_SUCCESS';
-export const GET_FLICKR_FAIL = 'sujin/flickr/GET_FLICKR_FAIL';
-
-export function getFlickrInit() {
+export function requestFlickrInit() {
   return {
-    type: GET_FLICKR_INIT,
+    type: REQUEST_FLICKR_INIT,
   };
 }
 
-export function getFlickrSuccess(response) {
+export function requestFlickrSuccess(response) {
   return {
-    type: GET_FLICKR_SUCCESS,
+    type: REQUEST_FLICKR_SUCCESS,
     response,
   };
 }
 
-export function getFlickrFail() {
+export function requestFlickrFail() {
   return {
-    type: GET_FLICKR_FAIL,
-  };
-}
-
-export function getFlickr() {
-  return (dispatch) => {
-    dispatch(getFlickrInit());
-
-    axios.get('wp-json/sujin/v1/flickr/', {})
-      .then((response) => {
-        dispatch(getFlickrSuccess(response));
-      }).catch((error) => {
-        dispatch(getFlickrFail(error));
-      });
+    type: REQUEST_FLICKR_FAIL,
   };
 }

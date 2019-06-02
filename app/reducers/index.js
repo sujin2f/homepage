@@ -1,23 +1,21 @@
-import { combineReducers } from 'redux';
-
 import global from './global';
-import archive from './archive';
+import history from './history';
 import flickr from './flickr';
-import post from './post';
+import frontPage from './front-page';
 import page from './page';
-import recentPost from './recent-post';
-import relatedPost from './related-post';
-import slider from './slider';
+import archive from './archive';
+import post from './post';
+
+const { combineReducers } = wp.data;
 
 const reducer = combineReducers({
-  archive,
   global,
+  history,
   flickr,
-  post,
+  frontPage,
   page,
-  recentPost,
-  relatedPost,
-  slider,
+  archive,
+  post,
 });
 
 export default reducer;

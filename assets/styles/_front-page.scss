@@ -1,0 +1,28 @@
+#wrapper.stretched-background > main {
+	.page-header-wrapper {
+		height: calc(100vh);
+
+		.overlay {
+			height: calc(100vh);
+		}
+
+		.text {
+			h1 {
+				height: 116px;
+				text-indent: -10000px;
+				overflow: hidden;
+				display: block;
+				background: transparent url('../images/logo.svg') no-repeat 0 0;
+				width: 100%;
+				background-position: center bottom;
+				margin-bottom: 15px;
+			}
+
+			p {
+				font-size: 1.5em;
+				text-align: center;
+				margin-bottom: 0;
+			}
+		}
+	}
+}

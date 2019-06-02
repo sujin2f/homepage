@@ -1,96 +1,50 @@
-import axios from 'app/utils/axios';
-import axiosOrigin from 'axios';
-import { scrollTo } from 'app/utils/common';
+export const REQUEST_POST_INIT = 'sujin/post/REQUEST_POST_INIT';
+export const REQUEST_POST_SUCCESS = 'sujin/post/REQUEST_POST_SUCCESS';
+export const REQUEST_POST_FAIL = 'sujin/post/REQUEST_POST_FAIL';
 
-export const GET_POST_INIT = 'sujin/single/GET_POST_INIT';
-export const GET_POST_SUCCESS = 'sujin/single/GET_POST_SUCCESS';
-export const GET_POST_FAIL = 'sujin/single/GET_POST_FAIL';
+export const REQUEST_RECENT_POSTS_INIT = 'sujin/post/REQUEST_RECENT_POSTS_INIT';
+export const REQUEST_RECENT_POSTS_SUCCESS = 'sujin/post/REQUEST_RECENT_POSTS_SUCCESS';
+export const REQUEST_RECENT_POSTS_FAIL = 'sujin/post/REQUEST_RECENT_POSTS_FAIL';
 
-export const GET_SERIES_INIT = 'sujin/single/GET_SERIES_INIT';
-export const GET_SERIES_SUCCESS = 'sujin/single/GET_SERIES_SUCCESS';
-export const GET_SERIES_FAIL = 'sujin/single/GET_SERIES_FAIL';
-
-// Get Post
-
-function getPostInit(source) {
+// Post
+export function requestPostInit(slug) {
   return {
-    type: GET_POST_INIT,
-    source,
+    type: REQUEST_POST_INIT,
+    slug,
   };
 }
-export function getPostSuccess(response) {
+
+export function requestPostSuccess(slug, response) {
   return {
-    type: GET_POST_SUCCESS,
+    type: REQUEST_POST_SUCCESS,
+    slug,
     response,
   };
 }
-export function getPostFail(error) {
+
+export function requestPostFail(slug) {
   return {
-    type: GET_POST_FAIL,
-    error,
+    type: REQUEST_POST_FAIL,
+    slug,
   };
 }
 
-export function getPostServer(postSlug, source) {
-  const cancelToken = source ? { cancelToken: source.token } : {};
-
-  return axios.get(
-    'wp-json/sujin/v1/post/',
-    { params: { post_slug: postSlug } },
-    { ...cancelToken },
-  );
-}
-
-function getSeriesInit() {
+// Recent Posts
+export function requestRecentPostsInit() {
   return {
-    type: GET_SERIES_INIT,
+    type: REQUEST_RECENT_POSTS_INIT,
   };
 }
-function getSeriesSuccess(response) {
+
+export function requestRecentPostsSuccess(response) {
   return {
-    type: GET_SERIES_SUCCESS,
+    type: REQUEST_RECENT_POSTS_SUCCESS,
     response,
   };
 }
-function getSeriesFail(error) {
+
+export function requestRecentPostsFail() {
   return {
-    type: GET_SERIES_FAIL,
-    error,
-  };
-}
-
-function getSeries(id) {
-  return (dispatch) => {
-    dispatch(getSeriesInit());
-
-    axios.get(`wp-json/wp/v2/posts/?series=${id}&per_page=100`)
-      .then((response) => {
-        dispatch(getSeriesSuccess(response));
-      })
-      .catch((error) => {
-        dispatch(getSeriesFail(error));
-      });
-  };
-}
-
-export function getPost(postSlug, push) {
-  const cancelToken = axiosOrigin.CancelToken;
-  const source = cancelToken.source();
-
-  return (dispatch) => {
-    scrollTo();
-    dispatch(getPostInit(source));
-
-    getPostServer(postSlug, source)
-      .then((response) => {
-        if (response.data.series.length > 0) {
-          dispatch(getSeries(response.data.series[0]));
-        }
-        dispatch(getPostSuccess(response));
-      })
-      .catch((error) => {
-        dispatch(getPostFail(error));
-        dispatch(push(`${process.env.SUJIN_BASE_URL}404`));
-      });
+    type: REQUEST_RECENT_POSTS_FAIL,
   };
 }
