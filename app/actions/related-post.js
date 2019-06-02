@@ -26,11 +26,7 @@ function getRelatedPostsFail(error) {
   };
 }
 
-export function getRelatedPosts(postId, prevToken) {
-  if (prevToken) {
-    prevToken.cancel('Canceled');
-  }
-
+export function getRelatedPosts(postId) {
   const cancelToken = axiosOrigin.CancelToken;
   const source = cancelToken.source();
 

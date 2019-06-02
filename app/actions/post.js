@@ -73,11 +73,7 @@ function getSeries(id) {
   };
 }
 
-export function getPost(postSlug, push, prevToken) {
-  if (prevToken) {
-    prevToken.cancel('Canceled');
-  }
-
+export function getPost(postSlug, push) {
   const cancelToken = axiosOrigin.CancelToken;
   const source = cancelToken.source();
 

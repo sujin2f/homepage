@@ -24,6 +24,7 @@ class FrontPageSlider extends Component {
       <Slider
         className="slider-wrapper"
         duration="500"
+        autoplay="5000"
         >
         {entities.map(item => (
           <div

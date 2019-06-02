@@ -67,7 +67,6 @@ class GlobalHeader extends Component {
 
         <Link href={`${process.env.SUJIN_BASE_URL}`} className="logo">
           <SVGIcon name="logo-header" className="desktop tablet" />
-          <SVGIcon name="logo-header-mobile" className="mobile" />
         </Link>
 
         <MenuContainer className={movileActivated} />

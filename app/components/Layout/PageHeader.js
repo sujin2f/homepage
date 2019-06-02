@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import MenuContainer from 'app/components/Common/MenuContainer';
-
 class PageHeader extends Component {
   render() {
     const { style, text, background } = this.props;
@@ -16,12 +14,6 @@ class PageHeader extends Component {
 
         <div className="text">
           {text}
-        </div>
-
-        <div className="row">
-          <section className="columns small-12">
-            <MenuContainer className="hide-for-small-only flex-container-row" position="middle" />
-          </section>
         </div>
       </section>
     );

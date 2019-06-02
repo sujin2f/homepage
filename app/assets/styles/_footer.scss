@@ -3,31 +3,57 @@
 	color: $white;
 
 	.widget-area {
-		padding: 30px 0 40px;
+		padding: 2em 0;
 
 		h1 {
-			color: white;
-			font-size: 1.5rem;
+			color: $white;
+			font-size: 1.5em;
+			font-weight: 800;
 		}
 
-		#Flickr {
-			.row {
-				margin: 0;
-			}
+		.columns {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 
-			.columns {
-				padding: 3px;
-				float: left;
+			ul {
+				list-style: none;
+				margin: 2em 0 0;
+				display: flex;
+				align-items: center;
 
-				figure.thumbnail {
-					height: auto;
+				li {
+					margin-right: 0.5em;
+
+					a {
+						display: block;
+						line-height: 0;
+					}
 				}
 			}
+		}
 
-			@include breakpoint(medium only) {
-				.columns {
-					&:nth-child(19), &:nth-child(20) {
-						display: none;
+		.contact {
+			.social-media {
+				li {
+					width: 1.5em;
+					margin-right: 0.5em;
+
+					svg {
+						fill: $white;
+					}
+				}
+			}
+		}
+
+		.powered-by {
+			ul {
+				li {
+					width: 4em;
+					margin-right: 0.5em;
+
+					.wordpress {
+						fill: $white;
 					}
 				}
 			}
@@ -35,39 +61,24 @@
 	}
 
 	#copywrite {
-		background-color: $black;
-		padding: 12px;
-		line-height: 1;
+		padding: 0 0 2em;
 
 		.row {
-			justify-content: space-between;
+			border-top: 1px solid lighten($brown, 10%);
+			padding-top: 2em;
 
-			.logo {
-				background: transparent url('/images/logo/footer.png') no-repeat center center;
-				width: 62px;
-				height: 27px;
-				margin-right: 10px;
-				margin-top: -5px;
-			}
+			.columns {
+				text-align: center;
 
-			#copyline {
-				margin: 0;
-				color: $white;
-			}
-
-			.social-media {
-				@include breakpoint(small only) {
-					.social-media-RSS {
-						display: none;
-					}
+				.logo-header-mobile {
+					background-color: $white;
+					fill: $brown;
+					width: 4em;
 				}
 
-				a {
+				#copyline {
+					margin: 0;
 					color: $white;
-
-					&:hover {
-						color: map-get($foundation-palette, 'primary');
-					}
 				}
 			}
 		}

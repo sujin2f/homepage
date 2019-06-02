@@ -39,10 +39,10 @@ class Archive extends Component {
     }
 
     const {
-      entities,
-      title,
-      description,
-      background,
+      entities = [],
+      title = '',
+      description = '',
+      background = '',
       totalPage,
       label,
     } = this.props;

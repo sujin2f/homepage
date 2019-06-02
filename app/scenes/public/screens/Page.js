@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 
 import PageContainer from 'app/components/PageContainer';
-import GlobalFooter from 'app/components/Layout/GlobalFooter';
 
 import { getPageServer, getPageSuccess, getPageFail } from 'app/actions/page';
 
@@ -21,8 +20,6 @@ class Page extends Component {
         <main className="page-wrapper">
           <PageContainer push={this.props.history.push} params={this.props.match.params} />
         </main>
-
-        <GlobalFooter />
       </section>
     );
   }

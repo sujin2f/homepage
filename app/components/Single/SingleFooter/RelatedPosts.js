@@ -22,9 +22,13 @@ class RelatedPosts extends Component {
 
   render() {
     const {
-      entities,
+      entities = [],
       loading,
     } = this.props;
+
+    if (entities.length === 0) {
+      return null;
+    }
 
     return (
       <section id="related-posts">

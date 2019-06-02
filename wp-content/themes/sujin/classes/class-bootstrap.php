@@ -18,10 +18,8 @@ class Bootstrap {
 		REST_WP::get_instance();
 		Posttype::get_instance();
 
-/*
 		Theme_Customizer::get_instance();
 		Custom_Fields::get_instance();
 		Post_Series::get_instance();
-*/
 	}
 }

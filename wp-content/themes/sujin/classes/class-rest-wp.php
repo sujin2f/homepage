@@ -22,7 +22,6 @@ class REST_WP {
 	use Rest_Helper;
 
 	public function __construct() {
-/*
 		Simple_Rest_API::get_instance( 'sujin/v1' )
 			->set_base( 'posts' )
 			->set_methods( WP_REST_Server::READABLE )
@@ -34,8 +33,7 @@ class REST_WP {
 
 			->set_base( 'post' )
 			->set_methods( WP_REST_Server::READABLE )
-			->set_callback( array( $this, 'get_post_by_slug' ) )
-*/
+			->set_callback( array( $this, 'get_post_by_slug' ) );
 
 		Simple_Rest_API::get_instance( 'wp/v2' )
 			->set_base( 'menu/(?P<menu_name>.+)' )
@@ -59,7 +57,6 @@ class REST_WP {
 		return $response;
 	}
 
-/*
 	public function get_posts_by_slug( $request ) {
 		$result_text = array();
 		$cat_ = null;
@@ -226,7 +223,6 @@ class REST_WP {
 
 		return $response;
 	}
-*/
 
 	public function get_menu_items( WP_REST_Request $request ): WP_REST_Response {
 		$menu_name = urldecode( $request->get_param( 'menu_name' ) );

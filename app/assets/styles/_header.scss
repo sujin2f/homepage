@@ -1,39 +1,39 @@
 #global-header {
-	position: fixed;
-	display: flex;
-	height: $header-height;
-	width: 100vw;
+  position: fixed;
+  display: flex;
+  height: $header-height;
+  width: 100vw;
   overflow: visible;
   z-index: 1000;
 
   .gap {
-    	background-color: map-get($foundation-palette, 'primary');
+      background-color: map-get($foundation-palette, 'primary');
 
     &.desktop-padding {
       @include breakpoint(medium only) {
-        	width: $mobile-gap;
+          width: $mobile-gap;
       }
 
       @include breakpoint(large xlarge) {
-        	width: calc((100vw - #{$global-width}) / 2);
+          width: calc((100vw - #{$global-width}) / 2);
       }
-    	}
-
-    	&.desktop-middle {
-      	flex-grow: 1;
-    	}
-
-    	&.mobile-left {
-      @include breakpoint(medium down) {
-        	flex-grow: 1;
       }
-    	}
 
-    	&.mobile-right {
+      &.desktop-middle {
+        flex-grow: 1;
+      }
+
+      &.mobile-left {
       @include breakpoint(medium down) {
-        	width: $header-height;
-      	}
-    	}
+          flex-grow: 1;
+      }
+      }
+
+      &.mobile-right {
+      @include breakpoint(medium down) {
+          width: $header-height;
+        }
+      }
   }
 
   .logo {
@@ -54,12 +54,12 @@
   }
 
   .menu {
-    	background-color: map-get($foundation-palette, 'primary');
-    	padding-left: 10px;
+      background-color: map-get($foundation-palette, 'primary');
+      padding-left: 10px;
 
     li {
-      	a {
-        	color: $black;
+        a {
+          color: $black;
         padding: 0 1rem;
         display: flex;
         height: 100%;
@@ -69,7 +69,7 @@
         &:hover {
           background-color: darken(map-get($foundation-palette, 'primary'), 15%);
         }
-      	}
+        }
     }
 
     @include breakpoint(medium down) {
@@ -93,32 +93,32 @@
     }
   }
 
-	#mobile-menu {
+  #mobile-menu {
     display: flex;
     align-items: center;
     justify-content: center;
-    	width: $header-height;
-    	height: $header-height;
-    	background-color: map-get($foundation-palette, 'primary');
+      width: $header-height;
+      height: $header-height;
+      background-color: map-get($foundation-palette, 'primary');
     outline: none;
-    	@include mobile;
-    	@include tablet;
+      @include mobile;
+      @include tablet;
 
-    	svg {
-      	width: 20px;
-    	}
+      svg {
+        width: 20px;
+      }
   }
 
-	#search-container {
-		height: $header-height;
-		width: $search-size;
-		background-color: map-get($foundation-palette, 'primary');
-		position: relative;
+  #search-container {
+    height: $header-height;
+    width: $search-size;
+    background-color: map-get($foundation-palette, 'primary');
+    position: relative;
     display: flex;
     align-items: center;
     transition: width 0.3s ease-in-out;
 
-		input {
+    input {
       position: absolute;
       box-shadow: none;
       border: none;
@@ -126,9 +126,9 @@
       border-radius: $search-size;
       height: $search-size;
       padding-left: 15px;
-		}
+    }
 
-		button {
+    button {
       position: absolute;
       width: $search-size;
       height: $search-size;
@@ -142,11 +142,11 @@
         width: 15px;
         fill: map-get($foundation-palette, 'primary');
       }
-		}
+    }
 
-		&.open {
-  		  width: 250px;
-		}
+    &.open {
+        width: 250px;
+    }
 
     @include breakpoint(medium down) {
     position: absolute;
@@ -173,5 +173,58 @@
       }
     }
     }
-	}
+  }
+}
+
+.page-header-wrapper {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: center;
+  }
+
+  .foreground {
+    background-image: url('/images/background/dotted-dark-foreground.png');
+    position: absolute;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+  }
+
+  .text {
+    position: absolute;
+    color: #fff;
+    z-index: 200;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1200px;
+
+    h1 {
+      font-size: 4em;
+
+      @include breakpoint(small only) {
+        font-size: 40px;
+      }
+    }
+
+    p {
+      font-size: 1.5em;
+      line-height: 1.5em;
+      margin-bottom: 0;
+
+      @include breakpoint(small only) {
+        font-size: 20px;
+      }
+    }
+  }
 }
