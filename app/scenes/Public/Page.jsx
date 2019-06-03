@@ -10,6 +10,8 @@ import { STORE, IS_ERROR } from 'app/constants/common';
 
 import { getRenderedText, parseJson } from 'app/utils/common';
 
+import DEFAULT_BACKGROUND from '../../../assets/images/background/category.jpg';
+
 const { withDispatch, withSelect } = wp.data;
 const { compose } = wp.compose;
 const { Component } = wp.element;
@@ -57,7 +59,10 @@ class Page extends Component {
       );
     }
 
-    const backgroundImage = parseJson(page.meta.background);
+    const backgroundImage =
+      parseJson(page.meta.background, 'post-thumbnail') ||
+      page.thumbnail ||
+      DEFAULT_BACKGROUND;
 
     return (
       <Public className="template-single">

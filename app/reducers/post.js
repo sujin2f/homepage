@@ -2,9 +2,14 @@ import {
   REQUEST_POST_INIT,
   REQUEST_POST_SUCCESS,
   REQUEST_POST_FAIL,
+
   REQUEST_RECENT_POSTS_INIT,
   REQUEST_RECENT_POSTS_SUCCESS,
   REQUEST_RECENT_POSTS_FAIL,
+
+  REQUEST_SLIDER_INIT,
+  REQUEST_SLIDER_SUCCESS,
+  REQUEST_SLIDER_FAIL,
 } from 'app/actions/post';
 
 import { IS_ERROR } from 'app/constants/common';
@@ -14,6 +19,10 @@ const initialState = {
   ids: {},
   loading: false,
   recentLoading: false,
+  slider: {
+    entities: [],
+    loading: false,
+  },
 };
 
 function post(state = initialState, action) {
@@ -98,6 +107,38 @@ function post(state = initialState, action) {
         recentLoading: false,
       };
     }
+
+    case REQUEST_SLIDER_INIT: {
+      return {
+        ...state,
+        slider: {
+          ...state.slider,
+          loading: true,
+        },
+      };
+    }
+
+    case REQUEST_SLIDER_SUCCESS: {
+      return {
+        ...state,
+        slider: {
+          ...state.slider,
+          entities: action.response.data,
+          loading: false,
+        },
+      };
+    }
+
+    case REQUEST_SLIDER_FAIL: {
+      return {
+        ...state,
+        slider: {
+          ...state.slider,
+          loading: false,
+        },
+      };
+    }
+
 
     default: {
       return state;

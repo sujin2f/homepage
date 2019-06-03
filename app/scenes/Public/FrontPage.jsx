@@ -1,3 +1,4 @@
+import Public from 'app/scenes/Public';
 import Slider from 'app/components/front-page/Slider';
 
 const { Component } = wp.element;

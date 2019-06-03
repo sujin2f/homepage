@@ -6,6 +6,10 @@ export const REQUEST_RECENT_POSTS_INIT = 'sujin/post/REQUEST_RECENT_POSTS_INIT';
 export const REQUEST_RECENT_POSTS_SUCCESS = 'sujin/post/REQUEST_RECENT_POSTS_SUCCESS';
 export const REQUEST_RECENT_POSTS_FAIL = 'sujin/post/REQUEST_RECENT_POSTS_FAIL';
 
+export const REQUEST_SLIDER_INIT = 'sujin/post/REQUEST_SLIDER_INIT';
+export const REQUEST_SLIDER_SUCCESS = 'sujin/post/REQUEST_SLIDER_SUCCESS';
+export const REQUEST_SLIDER_FAIL = 'sujin/post/REQUEST_SLIDER_FAIL';
+
 // Post
 export function requestPostInit(slug) {
   return {
@@ -46,5 +50,25 @@ export function requestRecentPostsSuccess(response) {
 export function requestRecentPostsFail() {
   return {
     type: REQUEST_RECENT_POSTS_FAIL,
+  };
+}
+
+// Slider
+export function requestSliderInit() {
+  return {
+    type: REQUEST_SLIDER_INIT,
+  };
+}
+
+export function requestSliderSuccess(response) {
+  return {
+    type: REQUEST_SLIDER_SUCCESS,
+    response,
+  };
+}
+
+export function requestSliderFail() {
+  return {
+    type: REQUEST_SLIDER_FAIL,
   };
 }
