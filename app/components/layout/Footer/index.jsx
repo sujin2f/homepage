@@ -1,5 +1,5 @@
 import Copywrite from 'app/components/layout/Footer/Copywrite';
-import Flickr from 'app/components/layout/Footer/Flickr';
+// import Flickr from 'app/components/layout/Footer/Flickr';
 
 const { Fragment, Component } = wp.element;
 
@@ -22,7 +22,7 @@ class GlobalFooter extends Component {
             />
           </div>
           <div className="small-12 medium-4 large-4 columns">
-            <Flickr />
+            middle
           </div>
           <div className="small-12 medium-4 large-4 columns" />
         </div>

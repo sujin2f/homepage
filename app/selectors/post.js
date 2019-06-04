@@ -13,4 +13,9 @@ export const getRecentPosts = (state) => ({
   loading: state.post.recentLoading,
 });
 
+export const getSlider = (state) => ({
+  entities: state.post.slider.entities || false,
+  loading: state.post.slider.loading,
+});
+
 /* eslint-enable import/prefer-default-export */

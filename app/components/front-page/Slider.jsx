@@ -11,7 +11,8 @@ const { compose } = wp.compose;
 
 class Slider extends Component {
   static getDerivedStateFromProps(props) {
-    if (!props.getPage().entities && !props.getPage().loading) {
+    console.log(props.getSlider());
+    if (props.getSlider().entities.length === 0 && !props.getSlider().loading) {
       props.requestSlider();
     }
   }
