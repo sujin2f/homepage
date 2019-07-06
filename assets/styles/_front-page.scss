@@ -26,3 +26,9 @@
 		}
 	}
 }
+
+#wrapper.front-page {
+	main {
+		border-top: $header-height solid black;
+	}
+}

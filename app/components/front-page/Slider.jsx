@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import Slider as AnimatedSlider from 'react-animated-slider';
+import AnimatedSlider from 'react-animated-slider';
 
 import Link from 'app/components/router/Link';
 
@@ -24,12 +24,13 @@ class Slider extends Component {
     console.log(entities, loading);
 
     return (
-      <section
+      <AnimatedSlider
         className="slider-wrapper"
+        duration="500"
+        autoplay="5000"
       >
         {entities.map(item => (
-          <Link
-            to={item.link}
+          <div
             key={`slider-${item.id}`}
             className="slider-content"
             style={{ background: `url('${item.thumbnail}') no-repeat center center` }}
@@ -37,11 +38,11 @@ class Slider extends Component {
             <div className="inner">
               <h1>{item.title.rendered}</h1>
               <p>{item.content.rendered}</p>
-              <button type="button">{item.meta['button-text'] || 'Read More'}</button>
+              <Link to={item.meta['link-url']}>{item.meta['button-text'] || 'Read More'}</Link>
             </div>
-          </Link>
+          </div>
         ))}
-      </section>
+      </AnimatedSlider>
     );
   }
 }

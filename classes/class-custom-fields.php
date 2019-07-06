@@ -24,15 +24,17 @@ class Custom_Fields {
 
 	function __construct() {
 		$slider = Post_Type::get_instance('Slider')
-			->set_show_in_rest(true);
+			->show_in_rest(true);
 
 		$metabox = Meta_Box::get_instance( 'Additional Info' )
 			->attach_to( $slider );
 
 		Meta_Input::get_instance( 'Link URL' )
+			->show_in_rest(true)
 			->attach_to( $metabox );
 
 		Meta_Input::get_instance( 'Button Text' )
+			->show_in_rest(true)
 			->attach_to( $metabox );
 
 		$metabox = Meta_Box::get_instance( 'Images' )

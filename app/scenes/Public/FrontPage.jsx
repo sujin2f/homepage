@@ -6,7 +6,7 @@ const { Component } = wp.element;
 class FrontPage extends Component {
   render() {
     return (
-      <Public>
+      <Public className="front-page">
         <Slider />
       </Public>
     );
