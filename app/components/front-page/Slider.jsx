@@ -5,6 +5,8 @@ import Link from 'app/components/router/Link';
 
 import { STORE } from 'app/constants/common';
 
+import { getRenderedText } from 'app/utils/common';
+
 const { Component } = wp.element;
 const { withDispatch, withSelect } = wp.data;
 const { compose } = wp.compose;
@@ -19,9 +21,7 @@ class Slider extends Component {
 
   render() {
     const { getSlider } = this.props;
-    const { entities, loading } = getSlider();
-
-    console.log(entities, loading);
+    const { entities } = getSlider();
 
     return (
       <AnimatedSlider
@@ -37,7 +37,8 @@ class Slider extends Component {
           >
             <div className="inner">
               <h1>{item.title.rendered}</h1>
-              <p>{item.content.rendered}</p>
+              <p dangerouslySetInnerHTML={{ __html: getRenderedText(item.content) }} />
+
               <Link to={item.meta['link-url']}>{item.meta['button-text'] || 'Read More'}</Link>
             </div>
           </div>

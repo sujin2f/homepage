@@ -77,19 +77,17 @@
         opacity: 0;
       }
 
-      button {
+      a {
         filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.1));
         transition: all .5s ease;
         border: none;
         background: map-get($foundation-palette, 'primary');
         border-radius: 30px;
         text-transform: uppercase;
-        box-sizing: border-box;
         padding: 15px 40px;
-        max-width: 180px;
         transition: all 0.3s ease;
         transform: translateY(20px);
-        opacity: 0;
+        color: black;
       }
     }
 

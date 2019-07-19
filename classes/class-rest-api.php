@@ -38,6 +38,7 @@ class REST_API {
 		new Media();
 
 		add_filter( 'rest_prepare_post', array( $this, 'get_single_post' ), 15, 3 );
+		add_filter( 'rest_prepare_slider', array( $this, 'get_single_post' ), 15, 3 );
 		add_filter( 'rest_prepare_page', array( $this, 'get_single_post' ), 15, 3 );
 	}
 

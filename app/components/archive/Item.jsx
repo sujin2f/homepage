@@ -7,7 +7,7 @@ import {
   parseDate,
 } from 'app/utils/common';
 
-import DEFAULT_BACKGROUND from '../../../assets/images/thumbnail.svg';
+import DEFAULT_BACKGROUND from '../../../assets/images/open-graph.png';
 
 const { Component } = wp.element;
 
