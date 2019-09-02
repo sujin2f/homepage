@@ -193,7 +193,7 @@ class Posts extends Abs_Rest_Base {
 	}
 
 	private function remote_get( string $url ) {
-		$response = wp_remote_get( 'http://localhost/wp-json/wp/v2/posts/' . $url );
+		$response = wp_remote_get( get_bloginfo( 'url' ) . '/wp-json/wp/v2/posts/' . $url );
 
 		if ( is_wp_error( $response ) ) {
 			return $response;
